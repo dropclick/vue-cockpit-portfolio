@@ -1,14 +1,14 @@
 <?php
  return array (
-  'name' => 'career_stages',
+  'name' => 'careerStages',
   'label' => 'Career Stages',
-  '_id' => 'career_stages5a96f6b0a05cf',
+  '_id' => 'careerStages5a9714247b724',
   'fields' => 
   array (
     0 => 
     array (
-      'name' => 'job_title',
-      'label' => 'Job Title',
+      'name' => 'companyName',
+      'label' => 'Company Name',
       'type' => 'text',
       'default' => '',
       'info' => '',
@@ -22,12 +22,11 @@
       'acl' => 
       array (
       ),
-      'required' => true,
     ),
     1 => 
     array (
-      'name' => 'company',
-      'label' => 'Company',
+      'name' => 'jobTitle',
+      'label' => 'Job Title',
       'type' => 'text',
       'default' => '',
       'info' => '',
@@ -44,8 +43,8 @@
     ),
     2 => 
     array (
-      'name' => 'description',
-      'label' => 'Description',
+      'name' => 'shortDescription',
+      'label' => 'Short Description',
       'type' => 'text',
       'default' => '',
       'info' => '',
@@ -62,8 +61,8 @@
     ),
     3 => 
     array (
-      'name' => 'from',
-      'label' => 'From',
+      'name' => 'startDate',
+      'label' => 'Start Date',
       'type' => 'text',
       'default' => '',
       'info' => '',
@@ -80,8 +79,8 @@
     ),
     4 => 
     array (
-      'name' => 'to',
-      'label' => 'To',
+      'name' => 'endDate',
+      'label' => 'End Date',
       'type' => 'text',
       'default' => '',
       'info' => '',
@@ -99,8 +98,8 @@
   ),
   'sortable' => false,
   'in_menu' => false,
-  '_created' => 1519842992,
-  '_modified' => 1519843001,
+  '_created' => 1519850532,
+  '_modified' => 1519853348,
   'color' => '',
   'acl' => 
   array (

@@ -56,6 +56,12 @@ gulp.task('vendor', function () {
   ])
     .pipe(gulp.dest('./vendor/vue'))
 
+  // Fetch API polyfill
+  gulp.src([
+    './node_modules/whatwg-fetch/*.js'
+  ])
+    .pipe(gulp.dest('./vendor/whatwg-fetch'))
+
   // jQuery
   gulp.src([
     './node_modules/jquery/dist/*',
