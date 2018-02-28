@@ -1,8 +1,8 @@
 {
-  "title": "Resume",
-  "name": "startbootstrap-resume",
-  "version": "4.0.0",
-  "description": "Resume is a simple, yet elegant resume and CV theme for Bootstrap 4.",
+  "title": "Simple Portfolio",
+  "name": "vue-cockpit-portfolio",
+  "version": "0.0.1",
+  "description": "Simple portfolio web page using vue.js and cockpit headless CMS.",
   "keywords": [
     "css",
     "sass",
@@ -11,19 +11,19 @@
     "theme",
     "template"
   ],
-  "homepage": "https://startbootstrap.com/template-overviews/resume",
+  "homepage": "https://github.com/dropclick/vue-cockpit-portfolio",
   "bugs": {
-    "url": "https://github.com/BlackrockDigital/startbootstrap-resume/issues",
-    "email": "feedback@startbootstrap.com"
+    "url": "https://github.com/dropclick/vue-cockpit-portfolio/issues",
+    "email": "github@svenpetersen.net"
   },
   "license": "MIT",
-  "author": "Start Bootstrap",
+  "author": "Sven Petersen",
   "contributors": [
-    "David Miller (http://davidmiller.io/)"
+    "Sven Petersen (http://www.svenpetersen.net/)"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/BlackrockDigital/startbootstrap-resume.git"
+    "url": "https://github.com/dropclick/vue-cockpit-portfolio.git"
   },
   "dependencies": {
     "bootstrap": "4.0.0",
@@ -38,6 +38,7 @@
     "gulp-header": "2.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    "gulp-uglify": "3.0.0"
+    "gulp-uglify": "3.0.0",
+    "gulp-connect-php": "1.0.2"
   }
 }

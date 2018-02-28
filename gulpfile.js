@@ -4,6 +4,7 @@ var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
+var connectPhp = require('gulp-connect-php/index.js');
 var pkg = require('./package.json');
 var browserSync = require('browser-sync').create();
 
@@ -75,6 +76,11 @@ gulp.task('vendor', function() {
 
 });
 
+// Start PHP server
+gulp.task('php', function() {
+  connectPhp.server();
+});
+
 // Compile SCSS
 gulp.task('css:compile', function() {
   return gulp.src('./scss/**/*.scss')
@@ -131,7 +137,7 @@ gulp.task('browserSync', function() {
 });
 
 // Dev task
-gulp.task('dev', ['css', 'js', 'browserSync'], function() {
+gulp.task('dev', ['css', 'js', 'browserSync', 'php'], function() {
   gulp.watch('./scss/*.scss', ['css']);
   gulp.watch('./js/*.js', ['js']);
   gulp.watch('./*.html', browserSync.reload);
