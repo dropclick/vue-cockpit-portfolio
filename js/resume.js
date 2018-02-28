@@ -26,3 +26,16 @@
   });
 
 })(jQuery); // End of use strict
+
+new Vue({
+  el: '#content',
+  data: {
+    firstName: 'Dirk',
+    lastName: 'Diggler',
+    street: 'Sternstraße 5d',
+    zipCode: '20357',
+    city: 'Hamburg',
+    phone: '(040) 555 123 456',
+    email: 'name@example.com'
+  }
+})
