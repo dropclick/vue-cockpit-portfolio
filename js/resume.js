@@ -27,9 +27,9 @@
 
 })(jQuery); // End of use strict
 
-new Vue({
-  el: '#content',
-  data: {
+var init = function () {
+  var data = {
+    apiUrl: location.hostname == 'localhost' ? 'http://localhost:8000' : location.protocol + '//' + location.hostname,
     apiKey: 'fcfaf298e1e7ba680da3ca07af3dda',
     firstName: 'Dirk',
     lastName: 'Diggler',
@@ -37,41 +37,49 @@ new Vue({
     zipCode: '20357',
     city: 'Hamburg',
     phone: '(040) 555 123 456',
-    email: 'name@example.com',
-    careerStages: []
-  },
-  created: function () {
-    this.fetchAllCollections(this.apiKey);
-    //this.fetchCollectionEntries('career_stages', self.apiKey, 'careerStages');
-  },
-  methods: {
-    fetchCollectionEntries: function (collectionName, apiKey) {
-      var self = this;
-      fetch('http://localhost:8000/admin/api/collections/get/' + collectionName + '?token=' + apiKey)
-      .then(function (response) {
-        return response.json()
-        }).then(function (json) {
-          self[collectionName] = json.entries;
-          console.log(self);
-      }).catch(function (ex) {
-        console.log('parsing failed', ex)
-      })      
-    },
-    fetchAllCollections: function (apiKey) {
-      var self = this;
-      fetch('http://localhost:8000/admin/api/collections/listCollections?token=' + apiKey)
-      .then(function (response) {
-        return response.json()
-        }).then(function (collections) {
-          console.log(collections);
-          collections.forEach(function (collectionName) {
-            self.fetchCollectionEntries(collectionName, apiKey);
-          });
-      }).catch(function (ex) {
-        console.log('parsing failed', ex)
-      })      
-    }
+    email: 'name@example.com'
   }
 
-})
+  fetch(data.apiUrl + '/admin/api/collections/listCollections?token=' + data.apiKey)
+    .then(function (response) {
+      return response.json()
+    }).then(function (collectionNames) {
+      data.collectionNames = collectionNames
+      collectionNames.forEach(function (collectionName) {
+        data[collectionName] = [];
+      });
+      new Vue({
+        el: '#content',
+        data: data,
+        created: function () {
+          this.fetchAllCollectionEntries();
+        },
+        methods: {
+          fetchAllCollectionEntries: function () {
+            var self = this;
+            this.collectionNames.forEach(function (collectionName) {
+              self.fetchCollectionEntries(collectionName);
+            });
+          },
+          fetchCollectionEntries: function (collectionName) {
+            var self = this;
+            fetch(data.apiUrl + '/admin/api/collections/get/' + collectionName + '?token=' + this.apiKey)
+              .then(function (response) {
+                return response.json()
+              }).then(function (json) {
+                self[collectionName] = json.entries;
+              }).catch(function (ex) {
+                console.log('parsing failed', ex)
+              })
+          }
+        }
+      })
+    }).catch(function (ex) {
+      console.log('parsing failed', ex)
+    })
+}
+
+init();
+
+
 
