@@ -167,11 +167,48 @@
       array (
       ),
     ),
+    9 => 
+    array (
+      'name' => 'interests',
+      'label' => 'Interests',
+      'type' => 'html',
+      'default' => '',
+      'info' => '',
+      'group' => '',
+      'localize' => false,
+      'options' => 
+      array (
+      ),
+      'width' => '1-1',
+      'lst' => true,
+      'acl' => 
+      array (
+      ),
+    ),
+    10 => 
+    array (
+      'name' => 'technologies',
+      'label' => 'Technologies',
+      'type' => 'multipleselect',
+      'default' => '',
+      'info' => '',
+      'group' => '',
+      'localize' => false,
+      'options' => 
+      array (
+        'options' => 'amazonwebservices, android, angularjs, apache, appcelerator, backbonejs, bootstrap, c, coffeescript, csharp, css3, docker, dot-net, drupal, erlang, git, go, gradle, grunt, gulp, html5, java, javascript, jquery, less, mysql, nginx, nodejs, oracle, php, python, rails, react, redis, ruby, swift, symfony, tomcat, typescript, vuejs, webpack, wordpress, zend',
+      ),
+      'width' => '1-1',
+      'lst' => true,
+      'acl' => 
+      array (
+      ),
+    ),
   ),
   'sortable' => false,
   'in_menu' => true,
   '_created' => 1519895997,
-  '_modified' => 1519901691,
+  '_modified' => 1519911658,
   'color' => '',
   'acl' => 
   array (
