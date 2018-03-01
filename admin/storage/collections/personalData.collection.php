@@ -204,11 +204,101 @@
       array (
       ),
     ),
+    11 => 
+    array (
+      'name' => 'facebookUrl',
+      'label' => 'Facebook URL',
+      'type' => 'text',
+      'default' => '',
+      'info' => '',
+      'group' => '',
+      'localize' => false,
+      'options' => 
+      array (
+      ),
+      'width' => '1-1',
+      'lst' => true,
+      'acl' => 
+      array (
+      ),
+    ),
+    12 => 
+    array (
+      'name' => 'twitterUrl',
+      'label' => 'Twitter URL',
+      'type' => 'text',
+      'default' => '',
+      'info' => '',
+      'group' => '',
+      'localize' => false,
+      'options' => 
+      array (
+      ),
+      'width' => '1-1',
+      'lst' => true,
+      'acl' => 
+      array (
+      ),
+    ),
+    13 => 
+    array (
+      'name' => 'gitHubUrl',
+      'label' => 'GitHub URL',
+      'type' => 'text',
+      'default' => '',
+      'info' => '',
+      'group' => '',
+      'localize' => false,
+      'options' => 
+      array (
+      ),
+      'width' => '1-1',
+      'lst' => true,
+      'acl' => 
+      array (
+      ),
+    ),
+    14 => 
+    array (
+      'name' => 'linkedInUrl',
+      'label' => 'LinkedIn URL',
+      'type' => 'text',
+      'default' => '',
+      'info' => '',
+      'group' => '',
+      'localize' => false,
+      'options' => 
+      array (
+      ),
+      'width' => '1-1',
+      'lst' => true,
+      'acl' => 
+      array (
+      ),
+    ),
+    15 => 
+    array (
+      'name' => 'instagramUrl',
+      'label' => 'Instagram URL',
+      'type' => 'text',
+      'default' => '',
+      'info' => '',
+      'group' => '',
+      'localize' => false,
+      'options' => 
+      array (
+      ),
+      'width' => '1-1',
+      'lst' => true,
+      'acl' => 
+      array (
+      ),
+    ),
   ),
   'sortable' => false,
   'in_menu' => true,
   '_created' => 1519895997,
-  '_modified' => 1519911658,
+  '_modified' => 1519914463,
   'color' => '',
   'acl' => 
   array (

@@ -74,32 +74,40 @@
           </div>
           <p class="mb-5" v-html="personalData.aboutMe"></p>
           <ul class="list-inline list-social-icons mb-0">
-            <li class="list-inline-item">
-              <a href="#">
+            <li v-if="personalData.facebookUrl" class="list-inline-item">
+              <a :href="personalData.facebookUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
-            <li class="list-inline-item">
-              <a href="#">
+            <li v-if="personalData.twitterUrl" class="list-inline-item">
+              <a :href="personalData.twitterUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
-            <li class="list-inline-item">
+            <li v-if="personalData.instagramUrl" class="list-inline-item">
               <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li v-if="personalData.linkedInUrl" class="list-inline-item">
+              <a :href="personalData.linkedInUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
-            <li class="list-inline-item">
-              <a href="#">
+            <li v-if="personalData.gitHubUrl" class="list-inline-item">
+              <a :href="personalData.gitHubUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-github fa-stack-1x fa-inverse"></i>
