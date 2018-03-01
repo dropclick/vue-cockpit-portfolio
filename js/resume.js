@@ -27,9 +27,11 @@
 
 })(jQuery); // End of use strict
 
+console.log(location.pathname);
+
 var init = function () {
   var data = {
-    apiUrl: location.hostname == 'localhost' ? 'http://localhost:8000' : location.protocol + '//' + location.hostname,
+    apiUrl: location.hostname == 'localhost' ? 'http://localhost:8000' : location.protocol + '//' + location.hostname + location.pathname,
     apiKey: 'fcfaf298e1e7ba680da3ca07af3dda',
     firstName: 'Dirk',
     lastName: 'Diggler',
@@ -67,7 +69,12 @@ var init = function () {
               .then(function (response) {
                 return response.json()
               }).then(function (json) {
-                self[collectionName] = json.entries;
+                if (json.entries && json.entries.length == 1) {
+                  self[collectionName] = json.entries[0];
+                }
+                else {
+                  self[collectionName] = json.entries;
+                }
               }).catch(function (ex) {
                 console.log('parsing failed', ex)
               })

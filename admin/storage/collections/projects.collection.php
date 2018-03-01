@@ -97,9 +97,9 @@
     ),
   ),
   'sortable' => false,
-  'in_menu' => false,
+  'in_menu' => true,
   '_created' => 1519843277,
-  '_modified' => 1519843277,
+  '_modified' => 1519896153,
   'color' => '',
   'acl' => 
   array (

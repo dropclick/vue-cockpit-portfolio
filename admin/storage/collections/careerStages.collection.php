@@ -96,10 +96,10 @@
       ),
     ),
   ),
-  'sortable' => false,
-  'in_menu' => false,
+  'sortable' => true,
+  'in_menu' => true,
   '_created' => 1519850532,
-  '_modified' => 1519853348,
+  '_modified' => 1519896109,
   'color' => '',
   'acl' => 
   array (
