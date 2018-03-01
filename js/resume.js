@@ -32,14 +32,7 @@ console.log(location.pathname);
 var init = function () {
   var data = {
     apiUrl: location.hostname == 'localhost' ? 'http://localhost:8000' : location.protocol + '//' + location.hostname + location.pathname,
-    apiKey: 'fcfaf298e1e7ba680da3ca07af3dda',
-    firstName: 'Dirk',
-    lastName: 'Diggler',
-    street: 'Sternstraße 5d',
-    zipCode: '20357',
-    city: 'Hamburg',
-    phone: '(040) 555 123 456',
-    email: 'name@example.com'
+    apiKey: 'fcfaf298e1e7ba680da3ca07af3dda'
   }
 
   fetch(data.apiUrl + '/admin/api/collections/listCollections?token=' + data.apiKey)
@@ -51,7 +44,7 @@ var init = function () {
         data[collectionName] = [];
       });
       new Vue({
-        el: '#content',
+        el: '#app',
         data: data,
         created: function () {
           this.fetchAllCollectionEntries();
