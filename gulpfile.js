@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');
 var connectPhp = require('gulp-connect-php/index.js');
 var pkg = require('./package.json');
 var browserSync = require('browser-sync').create();
+var cleanDest = require('gulp-clean-dest');
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -16,6 +17,22 @@ var banner = ['/*!\n',
   ' */\n',
   ''
 ].join('');
+
+
+// Copy all necessary files to dist folder
+gulp.task('dist', function () {
+  gulp.src([
+    'index.html',
+    'favicon.*',
+    'admin/**/*',
+    'vendor/**/*',
+    'img/**/*',
+    'js/**/*',
+    'css/**/*'
+  ], { base: '.', dot: true })
+    .pipe(cleanDest('dist'))
+    .pipe(gulp.dest('./dist'))
+});
 
 // Copy third party libraries from /node_modules into /vendor
 gulp.task('vendor', function () {
@@ -138,6 +155,9 @@ gulp.task('js', ['js:minify']);
 
 // Default task
 gulp.task('default', ['css', 'js', 'vendor']);
+
+// Build task
+gulp.task('build', ['default', 'dist']);
 
 // Configure the browserSync task
 gulp.task('browserSync', function () {
