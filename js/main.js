@@ -27,7 +27,6 @@
 
 })(jQuery); // End of use strict
 
-console.log(location.pathname);
 
 var init = function () {
   var data = {
