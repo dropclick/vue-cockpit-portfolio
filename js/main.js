@@ -30,11 +30,12 @@
 
 var init = function () {
   var data = {
-    apiUrl: location.hostname == 'localhost' ? 'http://localhost:8000' : location.protocol + '//' + location.hostname + location.pathname,
-    apiKey: 'fcfaf298e1e7ba680da3ca07af3dda'
+    apiUrl: location.hostname == 'localhost' ? 'http://localhost:8000/admin' : location.protocol + '//' + location.hostname + location.pathname + 'admin',
+    apiKey: 'fcfaf298e1e7ba680da3ca07af3dda',
+    basePath: location.pathname.slice(0, -1)
   }
 
-  fetch(data.apiUrl + '/admin/api/collections/listCollections?token=' + data.apiKey)
+  fetch(data.apiUrl + '/api/collections/listCollections?token=' + data.apiKey)
     .then(function (response) {
       return response.json()
     }).then(function (collectionNames) {
@@ -57,7 +58,7 @@ var init = function () {
           },
           fetchCollectionEntries: function (collectionName) {
             var self = this;
-            fetch(data.apiUrl + '/admin/api/collections/get/' + collectionName + '?token=' + this.apiKey)
+            fetch(data.apiUrl + '/api/collections/get/' + collectionName + '?token=' + this.apiKey)
               .then(function (response) {
                 return response.json()
               }).then(function (json) {

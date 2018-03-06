@@ -29,7 +29,7 @@ gulp.task('dist', function () {
     'img/**/*',
     'js/**/*',
     'css/**/*'
-  ], { base: '.' })
+  ], { base: '.', dot: true })
     .pipe(cleanDest('dist'))
     .pipe(gulp.dest('./dist'))
 });
@@ -157,7 +157,7 @@ gulp.task('js', ['js:minify']);
 gulp.task('default', ['css', 'js', 'vendor']);
 
 // Build task
-gulp.task('default', ['css', 'js', 'vendor']);
+gulp.task('build', ['default', 'dist']);
 
 // Configure the browserSync task
 gulp.task('browserSync', function () {
