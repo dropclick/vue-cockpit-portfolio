@@ -32,7 +32,9 @@ var init = function () {
   var data = {
     apiUrl: location.hostname == 'localhost' ? 'http://localhost:8000/admin' : location.protocol + '//' + location.hostname + location.pathname + 'admin',
     apiKey: 'fcfaf298e1e7ba680da3ca07af3dda',
-    basePath: location.pathname.slice(0, -1)
+    basePath: location.pathname.slice(0, -1),
+    collections: {},
+    regions: {}
   }
 
   fetch(data.apiUrl + '/api/collections/listCollections?token=' + data.apiKey)
@@ -41,39 +43,62 @@ var init = function () {
     }).then(function (collectionNames) {
       data.collectionNames = collectionNames
       collectionNames.forEach(function (collectionName) {
-        data[collectionName] = [];
+        data.collections[collectionName] = [];
       });
-      new Vue({
-        el: '#app',
-        data: data,
-        created: function () {
-          this.fetchAllCollectionEntries();
-        },
-        methods: {
-          fetchAllCollectionEntries: function () {
-            var self = this;
-            this.collectionNames.forEach(function (collectionName) {
-              self.fetchCollectionEntries(collectionName);
-            });
-          },
-          fetchCollectionEntries: function (collectionName) {
-            var self = this;
-            fetch(data.apiUrl + '/api/collections/get/' + collectionName + '?token=' + this.apiKey)
-              .then(function (response) {
-                return response.json()
-              }).then(function (json) {
-                if (json.entries && json.entries.length == 1) {
-                  self[collectionName] = json.entries[0];
-                }
-                else {
-                  self[collectionName] = json.entries;
-                }
-              }).catch(function (ex) {
-                console.log('parsing failed', ex)
-              })
-          }
-        }
-      })
+      fetch(data.apiUrl + '/api/regions/listRegions?token=' + data.apiKey)
+        .then(function (response) {
+          return response.json()
+        }).then(function (regionNames) {
+          data.regionNames = regionNames;
+          regionNames.forEach(function (regionName) {
+            data.regions[regionName] = [];
+          });
+          new Vue({
+            el: '#app',
+            data: data,
+            created: function () {
+              this.fetchAllCollectionEntries();
+              this.fetchAllRegionEntries();
+            },
+            methods: {
+              fetchAllRegionEntries: function () {
+                var self = this;
+                this.regionNames.forEach(function (regionName) {
+                  self.fetchRegionEntries(regionName);
+                });
+                console.log(self);
+              },
+              fetchRegionEntries: function (regionName) {
+                var self = this;
+                fetch(data.apiUrl + '/api/regions/data/' + regionName + '?token=' + this.apiKey)
+                  .then(function (response) {
+                    return response.json()
+                  }).then(function (json) {
+                    self.regions[regionName] = json;
+                  }).catch(function (ex) {
+                    console.log('parsing failed', ex)
+                  })
+              },
+              fetchAllCollectionEntries: function () {
+                var self = this;
+                this.collectionNames.forEach(function (collectionName) {
+                  self.fetchCollectionEntries(collectionName);
+                });
+              },
+              fetchCollectionEntries: function (collectionName) {
+                var self = this;
+                fetch(data.apiUrl + '/api/collections/get/' + collectionName + '?token=' + this.apiKey)
+                  .then(function (response) {
+                    return response.json()
+                  }).then(function (json) {
+                    self.collections[collectionName] = json.entries;
+                  }).catch(function (ex) {
+                    console.log('parsing failed', ex)
+                  })
+              }
+            }
+          })
+        })
     }).catch(function (ex) {
       console.log('parsing failed', ex)
     })
