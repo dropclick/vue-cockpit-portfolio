@@ -37,6 +37,33 @@ var init = function () {
     regions: {}
   }
 
+  if (window.location.search.indexOf('hint') > 0) {
+    $(':not(:has(div)):contains("{{")').each(function () {
+      var $this = $(this);
+      var text = $this.text();
+      if (text.indexOf('regions.') > 0 || text.indexOf('collections.') > 0) {
+        var segments = text.replace('{{', '').replace('}}', '').split('.');
+        var entityType = segments[0];
+        var entityName = segments[1];
+        if ($this.parents('.has-binding').length == 0) {
+          $this.css('border', '1px dashed red').css('cursor', 'pointer');
+          $this.attr('entity-type', entityType);
+          $this.attr('entity-name', entityName);
+          $this.addClass('has-binding');
+          //$this.attr('vue-on:click', 'openCockpitPage(\'aaa\', \'bbb\')');
+        }
+        //console.log(entityType + ':' + entityName);
+      }
+    });
+
+    $('body').on('click', '.has-binding', function () {
+      var $this = $(this);
+      var entityType = $this.attr('entity-type');
+      var entityName = $this.attr('entity-name');
+      window.open(data.apiUrl + '/' + entityType + '/form/' + entityName);
+    });
+  }  
+
   fetch(data.apiUrl + '/api/collections/listCollections?token=' + data.apiKey)
     .then(function (response) {
       return response.json()
@@ -61,6 +88,9 @@ var init = function () {
               this.fetchAllRegionEntries();
             },
             methods: {
+              openCockpitPage: function (entityType, entityName) {
+                alert(entityType + ':' + entityName);
+              },
               fetchAllRegionEntries: function () {
                 var self = this;
                 this.regionNames.forEach(function (regionName) {
