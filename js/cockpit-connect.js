@@ -36,7 +36,6 @@ var cockpitConnect = function () {
     $('[v-for]').each(function () {
       var $this = $(this);
       var text = $this.attr('v-for');
-      console.log(text);
       var operator = text.indexOf(' in ') > 0 ? 'in' : 'of';
       var entityType = text.split(' ' + operator + ' ')[1].split('.')[0];
       var entityName = text.split('.')[1];
@@ -74,12 +73,14 @@ var cockpitConnect = function () {
       linkToCockpit($this, entityType, entityName, entityAttr);
     });
 
-    $('body').on('click', '.has-binding', function () {
+    $('body').on('click', '.has-binding', function ($event) {
       var $this = $(this);
       var entityType = $this.attr('entity-type');
       var entityName = $this.attr('entity-name');
       var action = entityType == 'regions' ? 'form' : 'entries';
-      window.open(data.cockpitUrl + '/' + entityType + '/' + action + '/' + entityName);
+      var url = data.cockpitUrl + '/' + entityType + '/' + action + '/' + entityName;
+      window.open(url);
+      //window.location.href = url;
     });
   }
 
@@ -107,15 +108,11 @@ var cockpitConnect = function () {
               this.fetchAllRegionEntries();
             },
             methods: {
-              openCockpitPage: function (entityType, entityName) {
-                alert(entityType + ':' + entityName);
-              },
               fetchAllRegionEntries: function () {
                 var self = this;
                 this.regionNames.forEach(function (regionName) {
                   self.fetchRegionEntries(regionName);
                 });
-                console.log(self);
               },
               fetchRegionEntries: function (regionName) {
                 var self = this;
