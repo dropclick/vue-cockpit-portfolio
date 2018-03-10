@@ -71,12 +71,12 @@
             <span class="text-primary">{{regions.personalData.lastName}}</span>
           </h1>
           <div class="subheading mb-5">{{regions.personalData.street}} · {{regions.personalData.zipCode}} {{regions.personalData.city}} · {{regions.personalData.phone}} ·
-            <a :href="'mailto:' + regions.personalData.email">{{regions.personalData.email}}</a>
+            <a v-bind:href="'mailto:' + regions.personalData.email">{{regions.personalData.email}}</a>
           </div>
           <p class="mb-5" v-html="regions.personalData.aboutMe"></p>
           <ul class="list-inline list-social-icons mb-0">
             <li v-if="regions.personalData.facebookUrl" class="list-inline-item">
-              <a :href="regions.personalData.facebookUrl">
+              <a v-bind:href="regions.personalData.facebookUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -84,7 +84,7 @@
               </a>
             </li>
             <li v-if="regions.personalData.twitterUrl" class="list-inline-item">
-              <a :href="regions.personalData.twitterUrl">
+              <a v-bind:href="regions.personalData.twitterUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -100,7 +100,7 @@
               </a>
             </li>
             <li v-if="regions.personalData.linkedInUrl" class="list-inline-item">
-              <a :href="regions.personalData.linkedInUrl">
+              <a v-bind:href="regions.personalData.linkedInUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -108,7 +108,7 @@
               </a>
             </li>
             <li v-if="regions.personalData.gitHubUrl" class="list-inline-item">
-              <a :href="regions.personalData.gitHubUrl">
+              <a v-bind:href="regions.personalData.gitHubUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -221,10 +221,10 @@
   <script src="vendor/whatwg-fetch/fetch.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/main.min.js"></script>
+  <script src="js/resume.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/cockpit-connect.min.js"></script>
+  <script src="js/cockpit-connect.js"></script>
 
 </body>
 
