@@ -9,7 +9,18 @@ var cockpitConnect = function () {
     regions: {}
   }
 
-  if (window.location.search.indexOf('hint') > 0) {
+  var showHints = window.location.search.indexOf('hint') >= 0;
+  var buttonText = showHints ? 'Hide hints' : 'Show hints';
+  $('body').append('<button id="toggleSegmentHints" class="" style="position: fixed; top: 0; right: 0; background-color: #000; color: #fff; border: 0; font-size: 14px; padding: 10px 15px;">' + buttonText + '</button>')
+
+  $('#toggleSegmentHints').click(function () {
+    if (showHints)
+      window.location.href = window.location.href.replace('?hints','');
+    else
+      window.location.href = window.location.href + '?hints';
+  });
+
+  if (showHints > 0) {
 
     var linkToCockpit = function (element, entityType, entityName, entityAttr) {
       if (element.parents('.has-binding').length == 0) {
@@ -18,7 +29,7 @@ var cockpitConnect = function () {
         element.attr('entity-name', entityName);
         element.attr('title', entityType + ' > ' + entityName + (entityAttr && entityAttr.indexOf(' ') == -1 ? (' > ' + entityAttr) : ''));
         element.addClass('has-binding');
-      }  
+      }
     }
 
     $(':not(:has(div)):contains("{{")').each(function () {
