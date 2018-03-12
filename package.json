@@ -1,7 +1,7 @@
 {
   "title": "Simple Portfolio",
   "name": "vue-cockpit-portfolio",
-  "version": "0.0.1",
+  "version": "0.3.0",
   "description": "Simple portfolio web page using vue.js and cockpit headless CMS.",
   "keywords": [
     "css",
