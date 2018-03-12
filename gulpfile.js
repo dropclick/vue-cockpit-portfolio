@@ -67,11 +67,17 @@ gulp.task('vendor', function () {
   ])
     .pipe(gulp.dest('./vendor/font-awesome'))
 
-  // Vue.js
+  // Vue
   gulp.src([
     './node_modules/vue/dist/*.js'
   ])
     .pipe(gulp.dest('./vendor/vue'))
+
+  // Vue-Cockpit
+  gulp.src([
+    './node_modules/vue-cockpit/dist/*.js'
+  ])
+    .pipe(gulp.dest('./vendor/vue-cockpit'))
 
   // Fetch API polyfill
   gulp.src([

@@ -31,7 +31,7 @@
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
         <span class="d-block d-lg-none">Start Bootstrap</span>
         <span class="d-none d-lg-block">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" v-if="personalData.image" v-bind:src="basePath + personalData.image.path"
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" v-if="regions.personalData.image" v-bind:src="basePath + regions.personalData.image.path"
             alt="">
         </span>
       </a>
@@ -67,31 +67,32 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
         <div class="my-auto">
-          <h1 class="mb-0">{{personalData.firstName}}
-            <span class="text-primary">{{personalData.lastName}}</span>
+          <h1 class="mb-0">{{regions.personalData.firstName}}
+            <span class="text-primary">{{regions.personalData.lastName}}</span>
           </h1>
-          <div class="subheading mb-5">{{personalData.street}} · {{personalData.zipCode}} {{personalData.city}} · {{personalData.phone}} ·
-            <a :href="'mailto:' + personalData.email">{{personalData.email}}</a>
+          <div class="subheading mb-5">{{regions.personalData.street}} · {{regions.personalData.zipCode}} {{regions.personalData.city}} · {{regions.personalData.phone}}
+            ·
+            <a v-bind:href="'mailto:' + regions.personalData.email">{{regions.personalData.email}}</a>
           </div>
-          <p class="mb-5" v-html="personalData.aboutMe"></p>
+          <p class="mb-5" v-html="regions.personalData.aboutMe"></p>
           <ul class="list-inline list-social-icons mb-0">
-            <li v-if="personalData.facebookUrl" class="list-inline-item">
-              <a :href="personalData.facebookUrl">
+            <li v-if="regions.personalData.facebookUrl" class="list-inline-item">
+              <a v-bind:href="regions.personalData.facebookUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
-            <li v-if="personalData.twitterUrl" class="list-inline-item">
-              <a :href="personalData.twitterUrl">
+            <li v-if="regions.personalData.twitterUrl" class="list-inline-item">
+              <a v-bind:href="regions.personalData.twitterUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
-            <li v-if="personalData.instagramUrl" class="list-inline-item">
+            <li v-if="regions.personalData.instagramUrl" class="list-inline-item">
               <a href="#">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
@@ -99,16 +100,16 @@
                 </span>
               </a>
             </li>
-            <li v-if="personalData.linkedInUrl" class="list-inline-item">
-              <a :href="personalData.linkedInUrl">
+            <li v-if="regions.personalData.linkedInUrl" class="list-inline-item">
+              <a v-bind:href="regions.personalData.linkedInUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
-            <li v-if="personalData.gitHubUrl" class="list-inline-item">
-              <a :href="personalData.gitHubUrl">
+            <li v-if="regions.personalData.gitHubUrl" class="list-inline-item">
+              <a v-bind:href="regions.personalData.gitHubUrl">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -123,7 +124,7 @@
         <div class="my-auto">
           <h2 class="mb-5">Experience</h2>
 
-          <div v-for="entry in careerStages" class="resume-item d-flex flex-column flex-md-row mb-5">
+          <div v-for="entry in collections.careerStages" class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">{{entry.jobTitle}}</h3>
               <div class="subheading mb-3">{{entry.companyName}}</div>
@@ -142,7 +143,7 @@
         <div class="my-auto">
           <h2 class="mb-5">Education</h2>
 
-          <div v-for="entry in educationStages" class="resume-item d-flex flex-column flex-md-row mb-5">
+          <div v-for="entry in collections.educationStages" class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">{{entry.institutionName}}</h3>
               <div class="subheading mb-3">{{entry.degree}}</div>
@@ -163,7 +164,7 @@
 
           <div class="subheading mb-3">Programming Languages &amp; Tools</div>
           <ul class="list-inline list-icons">
-            <li v-for="technology in personalData.technologies" class="list-inline-item">
+            <li v-for="technology in regions.personalData.technologies" class="list-inline-item">
               <i v-bind:class="'devicons devicons-' + technology"></i>
             </li>
           </ul>
@@ -189,7 +190,7 @@
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
         <div class="my-auto">
           <h2 class="mb-5">Interests</h2>
-          <div v-html="personalData.interests"></div>
+          <div v-html="regions.personalData.interests"></div>
         </div>
       </section>
 
@@ -197,7 +198,7 @@
         <div class="my-auto">
           <h2 class="mb-5">Awards &amp; Certifications</h2>
           <ul class="fa-ul mb-0">
-            <li v-for="certification of certifications">
+            <li v-for="certification of collections.certifications">
               <i class="fa-li fa fa-trophy text-warning"></i>
               {{certification.name}}
             </li>
@@ -214,13 +215,19 @@
   <!-- Plugin JavaScript -->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Vue.js -->
+  <!-- Vue -->
   <script src="vendor/vue/vue.js"></script>
+
+  <!-- Vue Cockpit -->
+  <script src="vendor/vue-cockpit/vue-cockpit.js"></script>
 
   <!-- Fetch API polyfill -->
   <script src="vendor/whatwg-fetch/fetch.js"></script>
 
-  <!-- Custom scripts for this template -->
+  <!-- Custom scripts for this template (presentation only) -->
+  <script src="js/resume.min.js"></script>
+
+  <!-- Init Vue Cockpit -->
   <script src="js/main.min.js"></script>
 
 </body>
