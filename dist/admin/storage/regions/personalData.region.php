@@ -333,9 +333,16 @@
     'instagramUrl' => NULL,
   ),
   '_created' => 1519915901,
-  '_modified' => 1520013591,
+  '_modified' => 1520462983,
   'description' => '',
   'acl' => 
   array (
+    'public' => 
+    array (
+      'data' => false,
+      'render' => false,
+      'edit' => false,
+      'form' => false,
+    ),
   ),
 );

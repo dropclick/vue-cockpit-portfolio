@@ -99,7 +99,7 @@
   'sortable' => true,
   'in_menu' => true,
   '_created' => 1519850532,
-  '_modified' => 1519896109,
+  '_modified' => 1520464446,
   'color' => '',
   'acl' => 
   array (
@@ -118,5 +118,9 @@
     'delete' => 
     array (
     ),
+  ),
+  'contentpreview' => 
+  array (
+    'enabled' => false,
   ),
 );
