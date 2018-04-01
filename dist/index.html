@@ -171,18 +171,9 @@
 
           <div class="subheading mb-3">Workflow</div>
           <ul class="fa-ul mb-0">
+            <li v-for="skill in collections.workflowSkills">
+              <i class="fa-li fa fa-check"></i>{{skill.name}}</li>
             <li>
-              <i class="fa-li fa fa-check"></i>
-              Mobile-First, Responsive Design</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Browser Testing &amp; Debugging</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Functional Teams</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Agile Development &amp; Scrum</li>
           </ul>
         </div>
       </section>
@@ -227,8 +218,14 @@
   <!-- Custom scripts for this template (presentation only) -->
   <script src="js/resume.min.js"></script>
 
-  <!-- Init Vue Cockpit -->
-  <script src="js/main.min.js"></script>
+  <script>
+    var cockpitUrl = location.hostname == 'localhost' ? 'http://localhost:8000/admin' : location.protocol + '//' + location.hostname + location.pathname + 'admin';
+    var apiKey = 'fcfaf298e1e7ba680da3ca07af3dda';
+    var selector = '#app';
+
+    vueCockpit.init(cockpitUrl, apiKey, selector);
+  </script>
+
 
 </body>
 
